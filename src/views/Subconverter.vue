@@ -232,8 +232,18 @@ export default {
           Trojan: "trojan",
           Surge3: "surge&ver=3",
         },
-        backendOptions: [{ value: "http://127.0.0.1:25500/sub?" }],
+        backendOptions: [{ value: "https://r1.fxx6.top/sub?" }],
         remoteConfig: [
+        {
+            label: "my-config",
+            options: [
+              {
+                label: "config1",
+                value:
+                  "https://cdn.jsdelivr.net/gh/fxxisme/Fuyuwei-Fxx@main/script/clash/config/my-1.ini"
+              },
+            ]
+          },
           {
             label: "universal",
             options: [
@@ -309,8 +319,8 @@ export default {
       form: {
         sourceSubUrl: "",
         clientType: "",
-        customBackend: "",
-        remoteConfig: "",
+        customBackend: "https://r1.fxx6.top/sub?",
+        remoteConfig: "https://cdn.jsdelivr.net/gh/fxxisme/Fuyuwei-Fxx@main/script/clash/config/my-1.ini",
         excludeRemarks: "",
         includeRemarks: "",
         filename: "",
@@ -338,7 +348,10 @@ export default {
         }
       },
 
-      customParams: [],
+      customParams: [{
+        name: "append_info",
+        value: "false",
+      }],
 
       loading: false,
       customSubUrl: "",
