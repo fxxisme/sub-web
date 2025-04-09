@@ -195,6 +195,7 @@
 </template>
 
 <script>
+import { radomID } from '../common/utils'
 const project = process.env.VUE_APP_PROJECT
 const remoteConfigSample = process.env.VUE_APP_SUBCONVERTER_REMOTE_CONFIG
 const subDocAdvanced = process.env.VUE_APP_SUBCONVERTER_DOC_ADVANCED
@@ -523,8 +524,8 @@ export default {
     //   let data = new FormData();
     //   data.append("longUrl", btoa(this.customSubUrl));
       let data = {
-          "url": this.this.customSubUrl,
-          "slug": "issue301",
+          "url": this.customSubUrl,
+          "slug": radomID(),
           comment: "!**自动创建**"
         };
 
