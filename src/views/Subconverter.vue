@@ -520,19 +520,26 @@ export default {
 
       this.loading = true;
 
-      let data = new FormData();
-      data.append("longUrl", btoa(this.customSubUrl));
+    //   let data = new FormData();
+    //   data.append("longUrl", btoa(this.customSubUrl));
+      let data = {
+          "url": this.this.customSubUrl,
+          "slug": "issue301",
+          comment: "!**自动创建**"
+        };
 
       this.$axios
         .post(shortUrlBackend, data, {
-          header: {
-            "Content-Type": "application/form-data; charset=utf-8"
+          headers: {
+            "authorization": "Bearer 1234abcd_",
+            "Content-Type": "application/json; charset=utf-8",
+            
           }
         })
         .then(res => {
-          if (res.data.Code === 1 && res.data.ShortUrl !== "") {
-            this.curtomShortSubUrl = res.data.ShortUrl;
-            this.$copyText(res.data.ShortUrl);
+          if (res.status === 201) {
+            this.curtomShortSubUrl = res.data.shortLink;
+            this.$copyText(res.data.shortLink);
             this.$message.success("短链接已复制到剪贴板");
           } else {
             this.$message.error("短链接获取失败：" + res.data.Message);
